@@ -1,38 +1,51 @@
 <template>
-
-<div class="main" v-for = "post in productList" :key="post.id">
-
-</div>
-<main-posts></main-posts>
-  <button v-on:click="LikesReset">Reset</button>
+  <div class="posts" v-for = "post in productList" :key="post.id">
+    <div class="postheader">
+      <a class="posterPic" href=""><img class="profilepic" :src = "post.profilepic" width="25" height="25" alt="poster"></a>
+      <p class = "kuup">{{post.time}}</p>
+    </div>
+    <div class="post">
+      <img class="pic" :src = "post.pic" width="300">
+      <p class = tekst>{{post.description}}</p>
+    </div>
+    <div class="like">
+      <button v-on:click="Likes(post.id)">
+        <img src="https://www.pngplay.com/wp-content/uploads/1/Instagram-Heart-Background-PNG-Image.png" alt="Image" width="35" height="35">
+      </button>
+      <p class="likes"> {{post.likes}} </p>
+    </div>
+  </div>
 </template>
 
-
 <script>
-
-import MainPosts from "@/components/MainPosts";
-
-
-
 export default {
-  // eslint-disable-next-line vue/multi-word-component-names
-  name: 'Main',
-  components: {MainPosts},
+  name: "MainPosts",
+  props: [],
+  data: function () {
+    return {}
+  },
 
   methods: {
-    LikesReset: function() {
-      this.$store.commit("LikesReset")
+    Likes: function(id) {
+      this.$store.commit("Likes", id)
     }
   },
+
   computed: {
+    productList(){
+      return this.$store.getters.productListsale
+    },
   }
 }
-
 </script>
-
 <style scoped>
 * {
   font-family: sans-serif;
+}
+
+button {
+  background-color: transparent;
+  border: 0;
 }
 
 body {
@@ -57,20 +70,10 @@ a:hover{
 
 }
 
-button {
-  background:  #5A6267;
-  border: 0;
-  padding: 10px 20px 10px 20px;
-  margin-top:  20px;
-  margin-bottom:  20px;
-  margin-right:  10px;
-  color: white;
-  border-radius: 10px;
-  scale: 1.5;
-}
+.profilepic {
+  margin: 0px 10px;
+  font-size: 1.1em;
 
-button:hover{
-  transform: scale(1.1) perspective(1px)
 }
 
 ul {
@@ -79,6 +82,7 @@ ul {
   list-style: none;
 }
 
+
 section {
   padding: 10px 15px;
   margin: 10px;
@@ -86,7 +90,11 @@ section {
   text-align: center;
 }
 
-.main {
+.post {
+  margin: auto;
+}
+
+.posts {
   background-color: #F4F5F5;
   width: 300px;
   border-radius: 25px;
@@ -94,11 +102,12 @@ section {
   padding: 10px;
   margin: auto;
   margin-top: 15px;
+  margin-bottom: 20px;
   box-shadow: 3px 10px 20px #393738;
   transition: transform .2s
 }
 
-.main:hover{
+.posts:hover{
   transform: scale(1.05)
 }
 
@@ -109,9 +118,6 @@ section {
   margin-left: -125px;
 }
 
-.profilePic {
-  margin: 0px 10px;
-}
 
 .kuup {
   margin-left: 125px;
@@ -134,11 +140,6 @@ section {
 
 .like:hover{
   transform: scale(1.2)
-}
-
-.nav {
-  margin-top: 5px;
-  display: flex;
 }
 
 .nav a {
