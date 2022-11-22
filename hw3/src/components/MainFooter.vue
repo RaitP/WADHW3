@@ -8,7 +8,6 @@
         <li class="lingid"><a href="https://github.com/RaitP/WADHW1" target=”_blank”>Github</a></li>
       </ul>
     </div>
-
   </footer>
 </template>
 
@@ -80,8 +79,7 @@ footer {
   padding-top: 1%;
   padding-bottom: 1%;
   width: 100%;
-  bottom: 0;
-
+  bottom:0;
 }
 
 .lingid{

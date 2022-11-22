@@ -39,8 +39,8 @@ body {
   line-height: 1.6;
   margin: 0;
   background-color: #869FB2;
+  position: absolute;
 }
-
 p {
   color: #393738;
 }
@@ -62,7 +62,7 @@ button {
   border: 0;
   padding: 10px 20px 10px 20px;
   margin-top:  20px;
-  margin-bottom:  20px;
+  margin-bottom:  130px;
   margin-right:  10px;
   color: white;
   border-radius: 10px;
@@ -100,45 +100,6 @@ section {
 
 .main:hover{
   transform: scale(1.05)
-}
-
-
-.posterPic {
-  position: absolute;
-  margin-top: auto;
-  margin-left: -125px;
-}
-
-.profilePic {
-  margin: 0px 10px;
-}
-
-.kuup {
-  margin-left: 125px;
-}
-
-.tekst {
-  text-align: left;
-  margin-top: 0px;
-}
-
-.like{
-  display: inline-flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-left: -260px;
-  margin-top: -10px;
-  transition: transform .2s
-}
-
-.like:hover{
-  transform: scale(1.2)
-}
-
-.nav {
-  margin-top: 5px;
-  display: flex;
 }
 
 .nav a {

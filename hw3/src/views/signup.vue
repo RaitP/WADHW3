@@ -1,16 +1,23 @@
 <template>
   <div>
 
-    <form @submit.prevent="validateForm">
+    <form @submit.prevent ="validateForm">
       <h2>Create an account</h2>
-      <label htmlFor="email">Email</label>
-      <input type="email" required v-model="email">
-      <label htmlFor="password">Password</label>
-      <input type="password" required v-model="password">
-      <div v-if="validatePassword" className="error"> {{ validatePassword }}</div>
+      <label for="email">Email</label>
+      <input type="email" placeholder="Email" required v-model="email">
 
-      <div className="submit">
-        <button>Sign up</button>
+      <label for="password">Password</label>
+      <input type="password" placeholder="Password" v-model="password">
+      <span :class="has_minimum_length ? 'has_required' : ''">The password should be at least 8 chars and less than 15 chars</span>,
+      <span :class="has_number ? 'has_required' : ''">Includes at least one uppercase alphabet character</span>,
+      <span :class="has_2lowercase ? 'has_required' : ''">Includes at least two lowercase alphabet characters</span>,
+      <span :class="has_firstuppercase ? 'has_required' : ''">Includes at least one numeric value</span>,
+      <span :class="has_uppercase ? 'has_required' : ''">It should start with an uppercase alphabet</span>
+      <span :class="has_underscore ? 'has_required' : ''">It should include the character “_”</span>
+
+
+      <div class="submit">
+        <button v-on:click="alertFun">Sign up</button>
       </div>
     </form>
 
@@ -24,34 +31,73 @@
 export default {
   name: "FormView",
 
-  data: function () {
+  data() {
     return {
-      email: '',
       password: '',
-      role: '',
-      terms: false,
-      validatePassword: '',
+      email: '',
+      has_minimum_length: false,
+      has_number: false,
+      has_2lowercase: false,
+      has_firstuppercase: false,
+      has_uppercase: false,
+      has_underscore: false
+    }
+  },
+  watch: {
+    password() {
+      this.has_minimum_length = (this.password.length > 8 || this.password < 15);
+      this.has_number = /\d/.test(this.password);
+      this.has_2lowercase = /[a-z]{2}/.test(this.password);
+      this.has_firstuppercase = /[A-Z]/.test(this.password[0]);
+      this.has_uppercase = /[A-Z]/.test(this.password);
+      this.has_underscore = /[_]/.test(this.password);
     }
   },
   methods: {
     /* Validate password */
-    validateForm() {
-      console.log('signup is submitted');
-      this.validatePassword = (this.password.length < 8 || this.password > 15) ? 'password must be between 8-15 chars' : ''
+    validateForm(){
+      console.log(this.email)
+      console.log(this.password)
+    },
+    alertFun() {
+      const list = [this.has_minimum_length, this.has_number, this.has_2lowercase, this.has_firstuppercase, this.has_uppercase, this.has_underscore];
+      const list2 = ["password minimum length is 8 and max 15", "password must at least contain one number", "password must contain 2 lowercase characters", "password must start with an uppercase alphabet", "password must contain at least one uppercase alphabet character", "password must have one underscore"];
 
-      console.log(this.validatePassword);
-      let regex = /[a-z]+[A-Z]+[0-9]+_+/
-      console.log(regex.test(this.password));
-      console.log(/[a-z]{2}/.test(this.password));
-      console.log(/[a-z]{2}/.test(this.password));
-      console.log(this.password);
-      this.validatePassword = regex.test(this.password) ? '' : 'password must contain a combination of Uppercase characters (A-Z), Lowercase characters (a-z), Digits (0-9), and _'
+      if(this.has_minimum_length && this.has_number && this.has_2lowercase && this.has_firstuppercase && this.has_uppercase && this.has_underscore) {
+        alert("correct password entry");
+      }
+      else {
+        for (let i = 0; i < list.length; i++) {
+          if (!list[i]) {
+            alert(list2[i])
+            break
+          }
+        }
+      }
     }
   }
 }
+
 </script>
 
 <style scoped>
+* {
+  font-family: sans-serif;
+}
+
+button {
+  background: grey;
+  border: 0;
+  padding: 10px 20px;
+  margin-top: 20px;
+  color: white;
+  border-radius: 20px;
+  cursor:pointer;
+}
+
+button:hover{
+  transform: scale(1.1) perspective(1px)
+}
 
 form {
   max-width: 420px;
@@ -80,23 +126,6 @@ input {
   border: none;
   border-bottom: 1px solid white;
   color: blue;
-}
-
-input[type="checkbox"] {
-  display: inline-block;
-  width: 16px;
-  margin: 0 10px 0 0;
-  position: relative;
-  top: 2px;
-}
-
-button {
-  background: rgb(8, 110, 110);
-  border: 0;
-  padding: 10px 20px;
-  margin-top: 20px;
-  color: white;
-  border-radius: 20px;
 }
 
 h2, .submit {

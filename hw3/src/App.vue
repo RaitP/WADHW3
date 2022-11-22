@@ -20,10 +20,19 @@
 </script>
 
 <style>
+body{ min-height:100vh; margin:0; position:relative; }
+header{ min-height:50px; background:lightcyan; }
+footer{ background:PapayaWhip; }
+
+/* Trick: */
 body {
-  margin: 0;
   position: relative;
 }
+
+footer {
+  position: absolute;
+}
+
 #app {
   text-align: center;
   min-height: 100%;
