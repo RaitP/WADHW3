@@ -37,6 +37,7 @@ export default {
     },
   }
 }
+
 </script>
 <style scoped>
 * {
@@ -63,17 +64,16 @@ a {
   text-decoration: none;
   transition: transform .2s
 }
+
 a:hover{
   /* background-color: rgb(201, 201, 201); */
   background-color: #738998;
   transform: scale(1.1) perspective(1px)
-
 }
 
 .profilepic {
   margin: 0px 10px;
   font-size: 1.1em;
-
 }
 
 ul {
@@ -81,7 +81,6 @@ ul {
   padding: 0;
   list-style: none;
 }
-
 
 section {
   padding: 10px 15px;
@@ -111,13 +110,11 @@ section {
   transform: scale(1.05)
 }
 
-
 .posterPic {
   position: absolute;
   margin-top: auto;
   margin-left: -125px;
 }
-
 
 .kuup {
   margin-left: 125px;

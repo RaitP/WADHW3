@@ -41,6 +41,7 @@ body {
   background-color: #869FB2;
   position: absolute;
 }
+
 p {
   color: #393738;
 }
@@ -50,11 +51,11 @@ a {
   text-decoration: none;
   transition: transform .2s
 }
+
 a:hover{
   /* background-color: rgb(201, 201, 201); */
   background-color: #738998;
   transform: scale(1.1) perspective(1px)
-
 }
 
 button {

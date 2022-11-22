@@ -8,13 +8,14 @@
 
       <label for="password">Password</label>
       <input type="password" placeholder="Password" v-model="password">
+      <div class="requirements">
       <span :class="has_minimum_length ? 'has_required' : ''">The password should be at least 8 chars and less than 15 chars</span>,
       <span :class="has_number ? 'has_required' : ''">Includes at least one uppercase alphabet character</span>,
       <span :class="has_2lowercase ? 'has_required' : ''">Includes at least two lowercase alphabet characters</span>,
       <span :class="has_firstuppercase ? 'has_required' : ''">Includes at least one numeric value</span>,
       <span :class="has_uppercase ? 'has_required' : ''">It should start with an uppercase alphabet</span>
       <span :class="has_underscore ? 'has_required' : ''">It should include the character “_”</span>
-
+      </div>
 
       <div class="submit">
         <button v-on:click="alertFun">Sign up</button>
@@ -97,6 +98,10 @@ button {
 
 button:hover{
   transform: scale(1.1) perspective(1px)
+}
+
+.requirements {
+  padding-top: 10px;
 }
 
 form {

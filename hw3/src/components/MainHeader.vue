@@ -40,17 +40,11 @@ a {
   text-decoration: none;
   transition: transform .2s
 }
+
 a:hover{
   /* background-color: rgb(201, 201, 201); */
   background-color: #738998;
   transform: scale(1.1) perspective(1px)
-
-}
-
-.profilePic {
-  margin: 0;
-  font-size: 1.1em;
-
 }
 
 ul {
@@ -58,7 +52,6 @@ ul {
   padding: 0;
   list-style: none;
 }
-
 
 section {
   padding: 10px 15px;
@@ -82,60 +75,6 @@ section {
   position: sticky;
   top: 0;
   z-index: 999;
-}
-
-.post {
-  margin: auto;
-}
-
-.postitus {
-  background-color: #F4F5F5;
-  width: 300px;
-  border-radius: 25px;
-  border: 2px solid #F4F5F5;
-  padding: 10px;
-  margin: auto;
-  margin-top: 15px;
-  box-shadow: 3px 10px 20px #393738;
-  transition: transform .2s
-}
-
-.postitus:hover{
-  transform: scale(1.05)
-}
-
-
-.posterPic {
-  position: absolute;
-  margin-top: auto;
-  margin-left: -125px;
-}
-
-.profilePic {
-  margin: 0px 10px;
-}
-
-.kuup {
-  margin-left: 125px;
-}
-
-.tekst {
-  text-align: left;
-  margin-top: 0px;
-}
-
-.like{
-  display: inline-flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-left: -260px;
-  margin-top: -10px;
-  transition: transform .2s
-}
-
-.like:hover{
-  transform: scale(1.2)
 }
 
 .nav {
